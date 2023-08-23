@@ -3,9 +3,18 @@ import { View, Text, StyleSheet } from 'react-native';
 import { MaterialIcons } from 'TODO';
 
 const BookmarkTile = ({ bookmark }) => {
+	var title = bookmark.title;
+	if (title == null || title.length === 0) {
+		title = bookmark.website_title;
+	}
+	var description = bookmark.description;
+	if (description == null || description.length === 0) {
+		description = bookmark.website_description;
+	}
+	description = description?.substr(0, 80);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{bookmark.title}</Text>
+      <Text style={styles.title}>{title}</Text>
       <Text style={styles.url}>{bookmark.url}</Text>
       <View style={styles.tagContainer}>
         {bookmark.tag_names && bookmark.tag_names.map(tag => (
@@ -13,7 +22,7 @@ const BookmarkTile = ({ bookmark }) => {
         ))}
       </View>
       <View style={styles.descriptionContainer}>
-        <Text style={styles.description}>{bookmark.description}</Text>
+        <Text style={styles.description}>{description ?? ''}</Text>
 				<MaterialIcons 
 					name={bookmark.unread ? "mail" : "drafts"} 
 					size={20} color="#455a64"/>
