@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { saveSettings } from '../api/settingsApi'
 
-const LoginPage = () => {
+const LoginPage = ({navigation}) => {
   const [hostAddress, setHostAddress] = useState('');
   const [apiKey, setApiKey] = useState('');
 
   const handleTestButton = () => {
+
   };
 
-  const handleSubmitButton = () => {
+  const submit = () => {
+		saveSettings({
+			instanceUrl: hostAddress,
+			token: apiKey,
+		});
+		return true;
   };
 
   return (
@@ -30,7 +37,11 @@ const LoginPage = () => {
 				<TouchableOpacity style={styles.button} onPress={handleTestButton}>
           <Text style={styles.buttonText}>Test</Text>
         </TouchableOpacity>
-				<TouchableOpacity style={styles.button} onPress={handleSubmitButton}>
+				<TouchableOpacity style={styles.button} onPress={() => {
+					if(submit()){
+						navigation.navigate('Home');
+					}
+				}}>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
       </View>
