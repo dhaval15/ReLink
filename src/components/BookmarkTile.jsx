@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { MaterialIcons } from 'TODO';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const BookmarkTile = ({ bookmark }) => {
 	var title = bookmark.title;
@@ -23,7 +23,7 @@ const BookmarkTile = ({ bookmark }) => {
       </View>
       <View style={styles.descriptionContainer}>
         <Text style={styles.description}>{description ?? ''}</Text>
-				<MaterialIcons 
+				<Icon 
 					name={bookmark.unread ? "mail" : "drafts"} 
 					size={20} color="#455a64"/>
       </View>
