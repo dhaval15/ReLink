@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { saveSettings } from '../api/settingsApi'
 
@@ -9,6 +9,7 @@ const LoginPage = ({navigation}) => {
   const handleTestButton = () => {
 
   };
+
 
   const submit = () => {
 		saveSettings({
@@ -39,7 +40,7 @@ const LoginPage = ({navigation}) => {
         </TouchableOpacity>
 				<TouchableOpacity style={styles.button} onPress={() => {
 					if(submit()){
-						navigation.navigate('Home');
+						navigation.replace('Home');
 					}
 				}}>
           <Text style={styles.buttonText}>Submit</Text>
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     marginBottom: 40,
+    color: '#455a64',
   },
   input: {
     width: '100%',
@@ -69,6 +71,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     paddingHorizontal: 12,
     marginBottom: 16,
+    color: 'black',
 		backgroundColor: 'rgba(96, 125, 139, 0.1)',
   },
   buttonContainer: {

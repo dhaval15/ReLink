@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
+		color: '#182c35',
   },
   url: {
     marginBottom: 8,
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
   description: {
     flex: 1,
     marginRight: 8,
+		color: '#182c35',
   },
 });
 

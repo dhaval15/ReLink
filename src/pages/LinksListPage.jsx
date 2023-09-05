@@ -10,18 +10,15 @@ const LinksListPage = () => {
 	const [text, setText] = useState('Undefined');
 	useEffect(() => {
 		getSettings().then((settings) => {
-			setText(settings);
-			LinkdingApi(settings.instanceUrl, settings.token).getBookmarks().then((result) => {
+			//setText(settings);
+			const api = new LinkdingApi(settings.instanceUrl, settings.token);
+			api.getBookmarks().then((result) => {
 				setBookmarks(result.results);
-				setText(settings);
-			}).catch((err) => {
-				setText(err);
 			});
 		});
 	});
 	return (
 		<View style={styles.container}>
-			<Text> {text} </Text>
 			<FlatList
 				data={[...bookmarks]}
 				keyExtractor={bookmark => bookmark.id.toString()}

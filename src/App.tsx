@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   StyleSheet,
@@ -10,8 +10,10 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginPage from './pages/LoginPage';
+import SplashPage from './pages/SplashPage';
 import LinksListPage from './pages/LinksListPage';
 import TagsPage from './pages/TagsPage';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -24,21 +26,36 @@ function App(): JSX.Element {
 
   return (
 		<NavigationContainer>
-      <Stack.Navigator initialRouteName='Login'>
+      <Stack.Navigator initialRouteName='Splash'>
+        <Stack.Screen
+          name="Splash"
+          component={SplashPage}
+					options={{
+						headerShown: false,
+					}}
+        />
         <Stack.Screen
           name="Login"
           component={LoginPage}
-          //options={{title: 'Welcome'}}
+					options={{
+						headerShown: false,
+					}}
         />
         <Stack.Screen
           name="Home"
           component={LinksListPage}
-          options={{title: 'ReLink'}}
+          options={{
+						title: 'ReLink',
+						headerStyle: {
+    					backgroundColor: '#eceff1',
+							elevation: 0,
+						},
+						headerShadowVisible: false,
+					}}
         />
         <Stack.Screen
           name="Tags"
           component={TagsPage}
-          //options={{title: 'Welcome'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
